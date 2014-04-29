@@ -20,20 +20,19 @@ class DirectionLight:public ITickable
 {
 private:
     
-//    glm::vec3  lightPostion;       // world coordinate
-//    glm::vec3  lightIntensity;
+
     
     glm::vec3 _intensity;
-    glm::vec3 _direction;
+    glm::vec3 _direction;    //The deirction of the light
     
-    glm::mat4 _view;
-    glm::mat4 _proj;
+    glm::mat4 _view;        // The view matrix of the light
+    glm::mat4 _proj;        // The projection matrix of the light
     glm::mat4 _pv;
-    glm::mat4 _B;
+    glm::mat4 _B;           // The  bais matrix
 
     IDrawable * cube;
     
-    void Update();
+    void Update();          // update Day night
     
 public:
  

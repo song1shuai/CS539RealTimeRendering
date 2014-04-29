@@ -18,7 +18,7 @@ uniform vec3 lightIntensity;
 
 const float Log2  = 1.442695;
 const float FOGDENSITY = 0.005;
-const vec3  FOGDCOLOR = vec3(0.4,0.4,0.4)*0.65;
+const vec3  FOGDCOLOR = vec3(0.5,0.5,0.6);
 
 
 uniform sampler2D texLow;

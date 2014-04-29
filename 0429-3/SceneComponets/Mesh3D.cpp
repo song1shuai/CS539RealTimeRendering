@@ -365,7 +365,7 @@ void Mesh3D::Tick(float dt)//let the eagle fly around a circle
     
     _tickTime+=0.01;
     //    cout<<"_tickTime "<<_tickTime<<endl;
-    this->sceneNode.SetPosition(glm::vec3(210*sin(_tickTime)*dt+15,25,200*cos(_tickTime)*dt));
+    this->sceneNode.SetPosition(glm::vec3(150*sin(_tickTime)*dt+15,25,130*cos(_tickTime)*dt));
     //_tickTime=_tickTime;
 }
 Mesh3D::~Mesh3D()

@@ -38,7 +38,6 @@ private:
     OpenGLContext _opengGLcontext;              
     InputHandler _inputhandler;
     sound _sound;
-   // Geometry _cube;
     
     SkyBox *skyBox;
     FPSCamera * _camera;

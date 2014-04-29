@@ -15,7 +15,7 @@ FPSCamera::FPSCamera()
     _target = glm::vec3(-1.0,10.0,-1.0);
     
     _sensitivity=0.1;
-    _MoveSpeed=4;
+    _MoveSpeed=10;
     
     _yaw = 180;
     _pitch = -10;

@@ -14,18 +14,18 @@
 #include <assert.h>
 class ShaderLibrary
 {
-
+    
 private:
     
-    static map<string, Shader*> shaders;
+    static map<string, Shader*> shaders;            // Use for store shaders
     static map<string, Shader*>::iterator iter;
     
 public:
     ~ShaderLibrary();
-    static Shader* GetShader(string name);
-    static void AddShader(Shader*);
-    static void ClearUp();
-    static void Init();
+    static Shader* GetShader(string name);      // Get shader by name
+    static void AddShader(Shader*);             // Add shader to the library
+    static void ClearUp();                      // Clear all the shader
+    static void Init();                         // Load and init shader
     
 };
 
