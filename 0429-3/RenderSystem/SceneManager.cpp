@@ -140,7 +140,6 @@ void SceneManager::ColorPass()
 void SceneManager::Render()
 {
      PostPass();
-     //ReflectPass();
      EnviPass();
      ColorPass();
     

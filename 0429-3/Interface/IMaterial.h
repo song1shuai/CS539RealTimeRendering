@@ -19,7 +19,10 @@
 
 class IMaterial
 {
+  
     
+        //contain the shader
+
 
 public:
    

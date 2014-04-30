@@ -19,7 +19,7 @@ SceneNode::SceneNode()
 //
 void SceneNode::SetRotation(float dX,float dY,float dZ)
 {/*
-  Redian
+    render the 
   */
     
     _rotation.x=glm::radians(dX);

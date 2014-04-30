@@ -22,7 +22,7 @@
 class Water:public IDrawable,public ITickable
 {
     
-
+// wate
     
     struct WaveParameters
     {
@@ -37,17 +37,20 @@ class Water:public IDrawable,public ITickable
     
 private:
     float _tickTime;
-    Plane _waterSurface;
+    Plane _waterSurface;                // a grid  use for generate flat water surface
     glm::mat4 _waterView;
-    glm::mat4 _mirrorMat;
-    ICamera * _camera;
-    float _waterHeight;
+    glm::mat4 _mirrorMat;               // the reflect matrix of from the water
+    ICamera * _camera;                  // current camera
+    float _waterHeight;                 // the high of the water
     
     glm::vec2 _directions[4];
     WaveParameters  _waveParam[4];
     
     glm::vec4 _waveParamater[4];
     
+    
+    // add the bounding box to the water so
+    //i can check if a point is in the water when i randomly generate staff such as trees in the terrain
     BoundingBox *_boundingBox;
 public:
     void SetCamera(ICamera * camera);
@@ -55,7 +58,7 @@ public:
     void Draw();
     void InitVAO();
     void Tick(float dt);
-    void RandomDirection();
+    void RandomDirection();         //random generate some  dirction of the water 
     void GenWave();
     glm::mat4 GetReflectMatrix();
     virtual ~Water();

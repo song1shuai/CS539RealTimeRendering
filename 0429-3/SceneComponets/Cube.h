@@ -14,6 +14,9 @@
 #include "ITickable.h"
 class Cube :public IDrawable,public ITickable
 {
+    
+    
+    // use for debuge ~~  so it can rotate ~~
 private:
 
     int _size;

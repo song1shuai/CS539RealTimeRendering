@@ -15,7 +15,8 @@
 #include "SceneManager.h"
 class SkyBoxMaterial:public IMaterial
 {
-
+    // material use for skybox just contain a cube texture 
+    
     
 public:
     CubeTexture cubeTexture;

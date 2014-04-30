@@ -21,13 +21,14 @@
 #include "Mesh3DMaterial.h"
 #include "BoundingBox.h"
 
-//using namespace glm;
 
+
+// The unit part of a mesh ;
 
 class Mesh3DUnit:public IDrawable
 {
     friend class Mesh3D;
-    friend class BoundingBox;
+    friend class BoundingBox; // The bounding box ~~ a useful staff
 private:
     
     GLuint _vbo;
@@ -50,9 +51,11 @@ public:
 
 class Mesh3D:public IDrawable,public ITickable
 {
-
+//  implement the interface of itickable so i can implement let my mesh move~~~~
+    
+    
+    
 private:
-   // aiScene _scene;
     
 
     bool InitFromScene(const aiScene* pScene, const std::string& Filename);
@@ -62,14 +65,13 @@ private:
 public:
     
     
-   // Mesh3D(const Mesh3D & target);
     Mesh3D()
     {
         this ->SetRenderTech(CASTSHADOW);
         this ->SetRenderTech(HASAABB);
     
     };
-    ~Mesh3D();
+    virtual ~Mesh3D();
     bool LoadFromFile(const std::string &source);
     virtual void Draw();
     virtual void InitVAO();
@@ -80,7 +82,7 @@ public:
     
     BoundingBox *  _boundingBox;
     Mesh3D* Clone();
-    void Tick(float dt);
+    virtual void Tick(float dt);
     
     
 };

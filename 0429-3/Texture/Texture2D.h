@@ -52,6 +52,9 @@ public:
     void Bind();
     void Init();
     void SetFilter(GLenum min,GLenum mag);
+    
+    
+    // use for  attact the frame buffer so the frame buffer can render image to it 
     void AttachByFrameBuffer(int texUnit ,int width , int height ,int format ,int sytermFormat=GL_RGBA);
     
     int GetUnitIndex();

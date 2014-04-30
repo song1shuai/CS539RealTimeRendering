@@ -15,19 +15,24 @@ class FrameBufferObject
 {
 private:
     
-    GLuint _dB;
-    GLuint _fB;
+    GLuint _dB;                 //The handler for the depth
+    GLuint _fB;                 //The handler for the frame
     int _width;
     int _height;
     bool _isStoreDepth;
-    Texture2D * _texture;
+    Texture2D * _texture;       //The texture bind to framebuffer
 
 public:
+    /*TODO:
+     
+     should not be hardcoding ~~~
+     */
+    
     FrameBufferObject():_dB(0),_fB(0),_width(500),_height(500),_isStoreDepth(true),_texture(NULL){};
     void Bind();
     void UnBind();
     virtual void Init();
-    void ResetViewPort();
+    void ResetViewPort();   // Reset the view port
     void Clear();
     static float size;
 };

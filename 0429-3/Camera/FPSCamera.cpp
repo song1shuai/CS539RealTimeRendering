@@ -15,7 +15,7 @@ FPSCamera::FPSCamera()
     _target = glm::vec3(-1.0,10.0,-1.0);
     
     _sensitivity=0.1;
-    _MoveSpeed=10;
+    _MoveSpeed=4;
     
     _yaw = 180;
     _pitch = -10;
@@ -66,22 +66,6 @@ void FPSCamera::Tick(float dt)
 void FPSCamera::Update()
 {
 
-//    glm:: quat qPitch =glm:: angleAxis(_pitch, glm::vec3(1.0,0.0,0.0));
-//    glm:: quat qYaw =glm:: angleAxis(_yaw,glm::vec3(0.0,1.0,0.0));
-//    
-//    glm:: quat temp = qPitch*qYaw;
-//    
-//    _view= glm::toMat4(temp);
-//    
-//    _world = glm::inverse(_view);
-//    glm::value_ptr(_world)[12] = _position.x;
-//    glm::value_ptr(_world)[13] = _position.y;
-//    glm::value_ptr(_world)[14] = _position.z;
-//    
-//    _view = glm::inverse(_world);
-
-   // _isDirt =false;
-    
     
     
     glm:: quat qPitch =glm:: angleAxis(_pitch, glm::vec3(1.0,0.0,0.0));
@@ -158,9 +142,9 @@ void FPSCamera::TurnLeft(float distance)
 }
 void FPSCamera::Onkeyboard(float dt)
 {
-
+    // handle the keyborad input
     
-    //if(SDL_GetMouseState(NULL, NULL)&SDL_BUTTON(1))
+    
     //{
         SDL_GetRelativeMouseState(&_x, &_y);
         this->Yaw(_x*_sensitivity);
@@ -171,7 +155,6 @@ void FPSCamera::Onkeyboard(float dt)
     
     if (isKeyDown(SDL_SCANCODE_R))
     {
-        //std::cout<<dt*_MoveSpeed<<std::endl;
         
         this->MoveUp(dt*_MoveSpeed);
     }

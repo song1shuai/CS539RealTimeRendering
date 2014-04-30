@@ -18,6 +18,11 @@
 #include<string>
 class CubeTexture:public ITexture
 {
+    
+    /*
+     why i name i to cube texture , it should be called texture3d~~~
+     */
+    
 private:
     
     unsigned char * _texture[6];

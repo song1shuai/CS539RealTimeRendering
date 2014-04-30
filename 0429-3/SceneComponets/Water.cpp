@@ -55,11 +55,8 @@ void Water::InitVAO()
 void Water::Tick(float dt)
 {
     
-     //dt*=0.01;
     _tickTime+=0.1;
    
-   // this->sceneNode.SetPosition(_camera->GetPosition());
-    //_tickTime=_tickTime;
 }
 void Water::SetCamera(ICamera * camera)
 {
@@ -71,20 +68,15 @@ glm::mat4 Water::GetReflectMatrix()
     glm::vec3 target = pos-_camera->GetForwardVector();
     
     
-//    if(pos.y >= _waterHeight)
-//    {
-        pos.z = 2.0 * _waterHeight - pos.z;
-        target.z = 2.0 * _waterHeight + target.z;
+    pos.z = 2.0 * _waterHeight - pos.z;
+    target.z = 2.0 * _waterHeight + target.z;
         
-        glm::vec3 waterForward = target - pos;
-        glm::vec3 waterSide = _camera->GetRight();
-        glm::vec3 waterUp = glm::cross(waterSide, waterForward);
+    glm::vec3 waterForward = target - pos;
+    glm::vec3 waterSide = _camera->GetRight();
+    glm::vec3 waterUp = glm::cross(waterSide, waterForward);
         
-        _waterView =  glm::lookAt(pos, target, waterUp);
-        
-        //glm::value_ptr(_waterView)[5]*=-1;
-       
-//}
+    _waterView =  glm::lookAt(pos, target, waterUp);
+    
 
      return _mirrorMat*_waterView;
 }
@@ -98,6 +90,11 @@ void Water::RandomDirection()
 }
 void Water::GenWave()
 {
+    
+ 
+    
+    //same fix water param  could be random generated
+    
     int overallSteepness = 0.2;
     
 	_waveParam[0].speed = 0.05;

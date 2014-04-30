@@ -25,20 +25,13 @@ enum TextureType
 class Mesh3DMaterial:public IMaterial
 {
     
-private:
+    // The material use for 3d mesh which contain five types texture
     
-   
-
+private:
     
     Texture2D * _textures[5];
     
-    bool _hasDiff;
-    bool _hasSpec;
-    bool _hasNorm;
-    bool _hasAlpha;
-    bool _hasDecal;
-    
-    BitArray _hasTexture;
+    BitArray _hasTexture;       // use for querry is this materail has some kind of materail
     
 public:
     

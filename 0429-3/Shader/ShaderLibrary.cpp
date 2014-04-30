@@ -42,7 +42,7 @@ void ShaderLibrary::Init()
      Note: USE GL_??_SHADER
      */
     
-    //add sky box shader
+    
     _skyBoxShader->LoadFromFile(GL_VERTEX_SHADER, "vSkyBox.glsl");
     _skyBoxShader->LoadFromFile(GL_FRAGMENT_SHADER, "fSkyBox.glsl");
     _skyBoxShader->SetName("skyBox");
@@ -57,8 +57,6 @@ void ShaderLibrary::Init()
     
     AddShader(_skyBoxShader);
     
-    
-    //add 3dmesh shader
     Shader* Mesh3DShader=new Shader();
     Mesh3DShader->LoadFromFile(GL_VERTEX_SHADER, "vMesh.glsl");
     Mesh3DShader->LoadFromFile(GL_FRAGMENT_SHADER, "fMesh.glsl");
@@ -81,7 +79,26 @@ void ShaderLibrary::Init()
     Mesh3DShader->AddUniform("hasDecal");
     AddShader(Mesh3DShader);
     
-    // The test shader
+    Shader* normal=new Shader();
+    
+    normal->LoadFromFile(GL_VERTEX_SHADER, "vNormal.glsl");
+    normal->LoadFromFile(GL_FRAGMENT_SHADER, "fNormal.glsl");
+    normal->SetName("normal");
+    normal->CreateShaderProgram();
+    
+    normal->AddUniform("mvp");
+    normal->AddUniform("nv");
+    normal->AddUniform("texNormal");
+    normal->AddUniform("texSpecular");
+    normal->AddUniform("texDiffuse");
+    normal->AddUniform("model");
+    normal->AddUniform("view");
+    normal->AddUniform("lightPos");
+    normal->AddUniform("lightIntensity");
+    normal->AddUniform("projection");
+    normal->AddUniform("enviSampler");
+    
+    AddShader(normal);
     
     Shader* test=new Shader();
     test->LoadFromFile(GL_VERTEX_SHADER, "vlighttest.glsl");
@@ -106,8 +123,6 @@ void ShaderLibrary::Init()
     AddShader(test);
     
     
-    // This shader use for cast shadow
-    
     Shader* shadow=new Shader();
     shadow->LoadFromFile(GL_VERTEX_SHADER, "vShadow.glsl");
     shadow->LoadFromFile(GL_FRAGMENT_SHADER, "fShadow.glsl");
@@ -115,9 +130,9 @@ void ShaderLibrary::Init()
     shadow->CreateShaderProgram();
     shadow->AddUniform("mvp");
     
+    //
     AddShader(shadow);
     
-    // This shader use for cast shadow witch mesh has alpha texture
     
     Shader* shadowA=new Shader();
     shadowA->LoadFromFile(GL_VERTEX_SHADER, "vShadowAlpha.glsl");
@@ -128,9 +143,6 @@ void ShaderLibrary::Init()
     shadowA->AddUniform("texAlpha");
     shadowA->AddUniform("hasAlpha");
     AddShader(shadowA);
-    
-    
-    //This shader use for terrain generation
     
     Shader* terrain=new Shader();
     terrain->LoadFromFile(GL_VERTEX_SHADER, "vTerrain.glsl");
@@ -148,6 +160,8 @@ void ShaderLibrary::Init()
     terrain->AddUniform("mvp");
     terrain->AddUniform("lightSPV");
     terrain->AddUniform("ShadowMap");
+    
+    
     terrain->AddUniform("texLow");
     terrain->AddUniform("texMiddle");
     terrain->AddUniform("texHeigh");
@@ -159,8 +173,6 @@ void ShaderLibrary::Init()
     
     AddShader(terrain);
     
-    
-    //This shader use for generation water
     
     Shader* water=new Shader();
     water->LoadFromFile(GL_VERTEX_SHADER, "vWater.glsl");
@@ -182,10 +194,25 @@ void ShaderLibrary::Init()
     water->AddUniform("cameraPos");
     water->AddUniform("wavaParam");
     
+    
+    // water->AddUniform("sceenWidth");
+    // water->AddUniform("sceenHeight");
+    
+    
+    
     AddShader(water);
     
     
-    // This shader use for generate plant
+    
+    Shader* basic=new Shader();
+    basic->LoadFromFile(GL_VERTEX_SHADER, "vBasic.glsl");
+    basic->LoadFromFile(GL_FRAGMENT_SHADER, "fBasic.glsl");
+    basic->SetName("basic");
+    basic->CreateShaderProgram();
+    basic->AddUniform("mvp");
+    AddShader(basic);
+    
+    
     Shader* plant=new Shader();
     plant->LoadFromFile(GL_VERTEX_SHADER, "vPlant.glsl");
     plant->LoadFromFile(GL_FRAGMENT_SHADER, "fPlant.glsl");

@@ -12,7 +12,7 @@
 #include <iostream>
 #include"Mesh3D.h"
 #include "ITickable.h"
-class RotateHouse:public Mesh3D,public ITickable
+class RotateHouse:public Mesh3D
 {
     
 public:

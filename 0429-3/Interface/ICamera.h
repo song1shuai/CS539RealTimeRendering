@@ -27,10 +27,7 @@ public:
     virtual glm::vec3 GetRight()=0;
     virtual void SetViewMatrix(glm::mat4 view)=0;
     virtual glm::mat4 GetCameraWorld()=0;
-    //virtual glm::vec3 &GetPosition()=0;
-//    {
-//        return _position;
-//    }
+
 
 };
 #endif /* defined(__CS539_SHUAI_SONG__ICamera__) */

@@ -39,8 +39,8 @@ private:
     InputHandler _inputhandler;
     sound _sound;
     
-    SkyBox *skyBox;
-    FPSCamera * _camera;
+    SkyBox *skyBox;             // The sky box of this assignment
+    FPSCamera * _camera;        // The fps style camera
     
     float   _FPS;
     int     _lasTime;

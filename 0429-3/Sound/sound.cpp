@@ -32,7 +32,7 @@ bool sound::LoadContent()
     music = Mix_LoadMUS( "forest.mp3" );
     if( music == NULL )
     {
-//        //std::cout<<"couldn't load music"<<endl;
+    //std::cout<<"couldn't load music"<<endl;
         return false;
     }
 

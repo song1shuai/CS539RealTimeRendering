@@ -21,6 +21,8 @@
 
 class ISceneNode
 {
+    
+    // contain all the information the drawable object in the scene
 protected:
 
     ISceneNode *            _parentNode;

@@ -16,6 +16,10 @@
 
 class InputHandler
 {
+    
+/*
+ for now, the inputhandler just use for pool out sdl event 
+ */
 
 private:
  

@@ -26,13 +26,15 @@ void FrameBufferObject::Init()
     // The depth buffer texture
     
     if(_isStoreDepth)
-    {
+    {// bind framebuffer to a renderbuffers
+        
         glGenRenderbuffers(1, &_dB);
         glBindRenderbuffer(GL_RENDERBUFFER, _dB);
         glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, _width, _height);
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _dB);
     }
     
+    //Bind framebuffer to a texture
 
         _texture = new Texture2D();
         _texture ->AttachByFrameBuffer(9,_width, _height, GL_RGBA);
@@ -44,35 +46,39 @@ void FrameBufferObject::Init()
         glDrawBuffer(GL_COLOR_ATTACHMENT0);
     
     GLenum result = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    
+    // debug the error message
+    
+    
     switch(result)
     {
         case GL_FRAMEBUFFER_COMPLETE:
 
-            printf("CFrameBuffer: [SUCCESS] framebuffer object is complete...\n");
+            std::cout <<"CFrameBuffer: [SUCCESS] framebuffer object is complete...\n"<<std::endl;
 
 
             break;
         case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
 
-            printf("CFrameBuffer: [ERROR] framebuffer incomplete, incomplete attachment...\n");
+            std::cout <<"CFrameBuffer: [ERROR] framebuffer incomplete, incomplete attachment...\n"<<std::endl;
 
             break;
             
         case GL_FRAMEBUFFER_UNSUPPORTED:
 
-            printf("Unsupported framebuffer format...\n");
+            std::cout <<"Unsupported framebuffer format...\n"<<std::endl;
 
 
             break;
         case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
 
-            printf("CFrameBuffer: [ERROR] framebuffer incomplete, missing attachment...\n");
-
+            std::cout <<"CFrameBuffer: [ERROR] framebuffer incomplete, missing attachment...\n"<<std::endl;
             
             break;
+            
         default:
-
-            printf("CFrameBuffer: [ERROR] framebuffer incomplete. unknown reason..");
+            
+            std::cout <<"CFrameBuffer: [ERROR] framebuffer incomplete. unknown reason.."<<std::endl;
 
 
     }

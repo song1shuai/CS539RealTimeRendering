@@ -21,6 +21,8 @@
 #include "MeshFactory.h"
 class terrain:public IDrawable
 {
+    
+    // a hight map based terrain . try to implement the lod ~~
 private:
 
     int _width;

@@ -11,26 +11,23 @@ Assignment::Assignment()
 {
     _FPS=60;
     
+    
+    // set and init sceneManager
     _opengGLcontext.InitOpenGLContext("test");
-    
-    //OpenGLContext *O;
     SceneManager::GetInstance().SetOpenGLContext(&_opengGLcontext);
-    
-    
-    //Init sceneManager
     SceneManager::GetInstance().Init();
-    
-    
-    //Init shader
     ShaderLibrary::Init();
     
     
-    //Add camera to the scene
+    
+    // Creat and add camera to the scene
     _camera  =new FPSCamera();
     SceneManager::GetInstance().SetCamera(_camera);
     SceneManager::GetInstance().AddToTickable(_camera);
     
-    //Add skybox to the scene
+    
+    
+    // Creat and add skybox to the scene
     SkyBoxMaterial* skyboxM=new SkyBoxMaterial();
     skyboxM->cubeTexture.Load("px_.jpg");
     skyboxM->cubeTexture.Load("nx_.jpg");
@@ -42,23 +39,25 @@ Assignment::Assignment()
     skyBox = new SkyBox(skyboxM);
     //init skybox
     skyBox->InitVAO();
-    
-    //Add skybox to scene.
+    //add to scene.
     skyBox->sceneNode.RotateX(180);
     SceneManager::GetInstance().AddSkyBox(skyBox);
     
-    //Add house to scene 
+    
+
+    // Creat a house and add to the scene
     Mesh3D * house= MeshFactory::GetInstance()->GetMesh("house");
-    //house->GetMaterial()->SetShader("test");
     house->sceneNode.SetScale(glm::vec3(0.01,0.01,0.01));
     house->sceneNode.SetPosition(glm::vec3(-70,2,0));
     SceneManager::GetInstance().AddToScene(house);
+    //Let the house cast shadow
     house->SetRenderTech(CASTSHADOW);
 
     
     
+    
+    // and eagle to the scene
     Mesh3D * eagle= MeshFactory::GetInstance()->GetMesh("eagle");
-    //house->GetMaterial()->SetShader("test");
     eagle->sceneNode.SetScale(glm::vec3(1,1,1));
     eagle->sceneNode.SetPosition(glm::vec3(200*sin(0),25,200*cos(0)));
     eagle->sceneNode.RotateX(-90);
@@ -66,9 +65,13 @@ Assignment::Assignment()
     SceneManager::GetInstance().AddToTickable(eagle);
     eagle->SetRenderTech(CASTSHADOW);//texture not matched
     
+    
+    
+    
+    // Creat a highmap terrain
     terrain * gameterrain = new terrain();
     gameterrain->SetRenderTech(CASTSHADOW);
-    //
+    // add  diffuse texture and normal map texture
     TerrainMaterial * terrainMat =   new TerrainMaterial();
     terrainMat->SetShader("terrain");
     terrainMat->SetTexture(MIDDLE, "grass.jpg");
@@ -77,32 +80,30 @@ Assignment::Assignment()
     terrainMat->SetTexture(NORMALLOW, "shatterN.png");
     terrainMat->SetTexture(NORMALMIDDLE, "grassN.png");
     terrainMat->SetTexture(NORMALHEIGH, "moss-texture_NRM.png");
-    
     gameterrain->AttachMaterial(terrainMat);
     gameterrain->LoadHightMap("heightmap1.jpg", 40);
     gameterrain->InitVAO();
     SceneManager::GetInstance().AddToScene(gameterrain);
     gameterrain->sceneNode.SetPosition(glm::vec3(-100.0,-5.0,-100.0));
+    // Randomly generate same plants
     gameterrain->GenPlant();
-
     
+    
+    
+    //  Create and add water to the scene
     Water * water = new Water(80,30,30,1,1);
     water->InitVAO();
     water->sceneNode.SetPosition(glm::vec3(25,9,15));
     SceneManager::GetInstance().AddToScene(water);
     SceneManager::GetInstance().AddWater(water);
     SceneManager::GetInstance().AddToTickable(water);
-
     
+    
+    //Two trees use for test
     Mesh3D * tree= MeshFactory::GetInstance()->GetMesh("bamboo");
     tree->sceneNode.SetPosition(glm::vec3(-50,0,-30));
-    //SceneManager::GetInstance().AddToScene(tree);
- 
-    
     Mesh3D * htree= MeshFactory::GetInstance()->GetMesh("hightree");
-   
     htree->sceneNode.SetPosition(glm::vec3(-50,0,-50));
-   // SceneManager::GetInstance().AddToScene(htree);
     _sound.LoadContent();
     _sound.Init();
     
@@ -124,7 +125,7 @@ Assignment::~Assignment()
 }
 void Assignment::Render()
 {
-
+    // the fuction not actually used
 
     
 }

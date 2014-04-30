@@ -18,21 +18,27 @@
 class GeomertryFactory;
 class DirectionLight:public ITickable
 {
+    /*
+     for now i just directly get the direction and intensity value 
+     The light system have not finished
+     
+     */
+    
+    
 private:
     
-
     
     glm::vec3 _intensity;
-    glm::vec3 _direction;    //The deirction of the light
+    glm::vec3 _direction;
     
-    glm::mat4 _view;        // The view matrix of the light
-    glm::mat4 _proj;        // The projection matrix of the light
+    glm::mat4 _view;
+    glm::mat4 _proj;
     glm::mat4 _pv;
-    glm::mat4 _B;           // The  bais matrix
+    glm::mat4 _B;
 
     IDrawable * cube;
     
-    void Update();          // update Day night
+    void Update();
     
 public:
  

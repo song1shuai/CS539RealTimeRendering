@@ -17,11 +17,11 @@ class FrameBufferObject3D
     
 private:
     
-    GLuint _dB;
-    GLuint _fB;
+    GLuint _dB;             //The handler for the depth
+    GLuint _fB;             //The handler for the frame
     int _size;
     bool _isStoreDepth;
-    CubeTexture  _texture;
+    CubeTexture  _texture;  //The cube texture bind to the framebufferobject2d
     
 public:
     FrameBufferObject3D():_dB(0),_fB(0),_size(0),_isStoreDepth(true){};

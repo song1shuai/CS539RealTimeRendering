@@ -10,6 +10,7 @@
 #define CS539_SHUAI_SONG_ITickable_h
 class ITickable
 {
+// the interface use for update
 public:
     virtual void Tick(float dt)=0;
 };

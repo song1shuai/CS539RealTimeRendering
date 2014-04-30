@@ -25,12 +25,16 @@ enum TerrainMaterialType
 };
 class TerrainMaterial:public IMaterial
 {
+    // Material use for terrain ~~~~
+    
+    
 private:
     Texture2D * _terrain[7];
 public:
     
+    ~TerrainMaterial();
     TerrainMaterial();
-    void SetTexture(TerrainMaterialType type,string filePath);
+    void SetTexture(TerrainMaterialType type,string filePath); // Set texture with texture type
     virtual void Init();
     virtual void Bind();
     

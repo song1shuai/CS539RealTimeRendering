@@ -58,7 +58,7 @@ void DirectionLight::ApplyLight(IMaterial *material)
 }
 void DirectionLight::Tick(float dt)
 {
-//    _direction = glm::rotate(_direction, 0.1*dt, glm::vec3(1.0,0.0,0.0));
+  // _direction = glm::rotate(_direction, 1*dt, glm::vec3(1.0,0.0,0.0));
 }
  glm::mat4 DirectionLight::GetLightSPV()
 {
@@ -67,8 +67,6 @@ void DirectionLight::Tick(float dt)
 }
 void DirectionLight::Update()
 {
-    // Update 
-    
     _view = glm::lookAt(_direction, glm::vec3(0,0,0), glm::vec3(0,1,0));
     _pv = _proj *  _view ;
 }

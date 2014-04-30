@@ -71,8 +71,9 @@ private:
     glm::mat3 _nv;
     glm::mat4 _mv;
     
-   //std::map<string, glm::mat4> sceneMat;
 private:
+    
+    // The componets and render buffers
     
     std::map<string, glm::mat4> sceneMat;
     
@@ -80,7 +81,6 @@ private:
     DirectionLight * _dLight;
     
     float _FPS;
-    //IDrawable * _curDrawable;
     static SceneManager _instance;
     SceneManager();
     ~SceneManager();
@@ -88,7 +88,6 @@ private:
     Water * _water;
    
     bool _isShadowPass;
-   // ITexture * _jitterTexture;
     ShadowBuffer* _shadowBuffer;
     FrameBufferObject * _reflectBuffer;
     FrameBufferObject3D * _envBuffer;
@@ -99,12 +98,9 @@ private:
     
 public:
     
-    
-    
-    ITexture * _jitterTexture;
-    glm::vec3 _jitterVector;
-    void ColorPass();
-    void PostPass();
+
+    void ColorPass(); // Render to screnn
+    void PostPass();  // Render the depth use for shadow map
     
     void Init();
     void AddToScene(IDrawable * node);
@@ -114,7 +110,7 @@ public:
     
     void RemoveFromScene(IDrawable * node);
     
-    //void ShadowPass(IDrawable * objectM);
+
     void Render();
     void Tick(float dt);
     void SetCamera( ICamera *camera);
@@ -122,21 +118,23 @@ public:
     void SetFPS();
     static SceneManager &GetInstance();
     
+    /*
+        below just return the current matrix in the scene
+     */
+    
     const glm::mat4  &GetMV();
     const glm::mat3  &GetNV();
     const glm::mat4  &GetMVPMatrix();
     const glm::mat4  &GetMPMatrix();
-    
     const glm::mat4  &GetWorldModelMatrix();
-    const glm::mat4 GetWorldViewMatrix();
+    const glm::mat4  GetWorldViewMatrix();
     const glm::mat4  GetWorldProjMatrix();
     void  AddSkyBox(SkyBox * _skyBox);
     void  AddWater(Water * Water);
     void  UpdateWorldMatrix(IMaterial * material);
     
-   // bool IsShadowPass();
     DirectionLight * Getlight();
-    ICamera *GetCamera();
+    ICamera *GetCamera();                   // return the current camera
     void ClearScene();
 };
 

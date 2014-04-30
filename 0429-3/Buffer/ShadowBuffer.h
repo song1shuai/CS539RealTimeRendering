@@ -17,12 +17,13 @@ class ShadowBuffer
 {
 private:
     
-    GLuint _dB;
-    GLuint _fB;
+    GLuint _dB;                 //The handler for the depth
+    GLuint _fB;                 //The handler for the frame
     int _width;
     int _height;
     bool _isStoreDepth;
     
+    // use for store the frameunit id
     static std::map<int, GLenum> frameUnitID;
     
     GLenum drawBuffers[1];

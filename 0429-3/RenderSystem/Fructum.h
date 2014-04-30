@@ -19,11 +19,8 @@ class FrustumPlane
 public:
     
     
-    /** This function will set the Plane equation coefficients for the Plane equation a*x + b*y + c*z = d.
-     * @param a The a coefficient.
-     * @param b The a coefficient.
-     * @param c The a coefficient.
-     * @param d The a coefficient.
+    /*
+     This function will set the Plane equation coefficients for the Plane equation a*x + b*y + c*z = d.
      */
     
     float d;

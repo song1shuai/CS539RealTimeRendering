@@ -27,6 +27,11 @@ enum CameraDirection {
 class FPSCamera:public  IkeyBoardListener,public ICamera,public ITickable
 {
 private:
+    /*
+     below is just same basic camera param
+     */
+    
+    
     
     glm::mat4 _projectonMatrix;
     glm::mat4 _view;
@@ -38,26 +43,26 @@ private:
     glm::vec3 _direction;
     glm::quat _qRotation;
     glm::vec3 _position;
-    //glm::vec3 _position;
     glm::mat4 _orentation;
     
     float _yaw;
     float _pitch;
     
-    float _sensitivity;
-    float _MoveSpeed;
+    float _sensitivity;                     // The sensitiviy when use yaw and pitch the camera
+    float _MoveSpeed;                       // The move speed of the camera
     
-    int _x;
-    int  _y;
+    int  _x;                                // The x value of the mouse in screen space
+    int  _y;                                // The y value of the mouse in screen space
     
     bool _isDirt;
 public:
     FPSCamera();
     virtual ~FPSCamera();
     
-    glm::mat4 GetViewMatrix();
-    glm::mat4 GetViewProjectionMatrix();
-    glm::mat4 GetProjectionMatrix();
+    glm::mat4 GetViewMatrix();              // return the current the view matrix
+    glm::mat4 GetViewProjectionMatrix();    // return the current view projection matrix
+    glm::mat4 GetProjectionMatrix();        // return the current projction matrix
+    glm::mat4 GetCameraWorld();             // return the camera maxtix in world space
     
     void Roll ( float angle);
     void Yaw (  float angle);
@@ -77,12 +82,19 @@ public:
     void SetPostion(float x,float y,float z);
     void MoveUp(float distance);
     void MoveDown(float distance);
+    
+    /*
+        use for get vectors of current camera matrix
+     */
      glm::vec3 GetForwardVector();
      glm::vec3 GetUp();
      glm::vec3 GetPosition();
      glm::vec3 GetRight();
-    virtual void SetViewMatrix(glm::mat4 view);
-    glm::mat4 GetCameraWorld();
+    
+    
+    
+    virtual void SetViewMatrix(glm::mat4 view);//The the veiw matirx
+   
     
     
 };

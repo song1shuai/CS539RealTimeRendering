@@ -16,6 +16,8 @@
 #include "Engine.h"
 class BasicMaterial:public IMaterial
 {
+    
+    // The basic material without texture
 private:
     
     glm::vec3 _ambient;

@@ -24,13 +24,17 @@ void TerrainMaterial::Bind()
 
     
     // Gl_texture_unit8 for shadowMap
+    
     _shader->PushUniform("ShadowMap",SHADOWMAP_TEX_ID);
+    
     //update light
     _shader->PushUniform("lightPos",SceneManager::GetInstance().Getlight()->GetDirection());
     _shader->PushUniform("lightIntensity", SceneManager::GetInstance().Getlight()->GetIntensity());
     
     _shader->PushUniform("lightSPV",SceneManager::GetInstance().Getlight()->GetLightSPV());
     
+    
+    //bind all the textures ~~~
     
     for (int i = 0; i< 7; i++)
     {
@@ -70,6 +74,9 @@ void TerrainMaterial::Bind()
 }
 void TerrainMaterial::SetTexture(TerrainMaterialType type,string filePath)
 {
+    
+    
+    
     Texture2D *texture =Texture2D::CreateNextUnit();
     texture->Load(filePath);
    _terrain[type] = texture;
@@ -85,4 +92,22 @@ TerrainMaterial::TerrainMaterial():IMaterial("terrain")
         
     }
    // Texture2D::ReSetSUnitIndex();
+}
+TerrainMaterial::~TerrainMaterial()
+{
+    // should  be delete in resourceManager  but i have not implemented it yet~~
+    
+    for (int i = 0; i<7; i++)
+    {
+        if(_terrain[i]!=NULL)
+        {
+            delete _terrain[i];
+            _terrain[i]=NULL;
+        }
+        
+        
+        
+    }
+    
+    
 }

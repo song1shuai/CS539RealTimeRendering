@@ -34,6 +34,8 @@ void FrameBufferObject3D::Init()
     }
     
     
+    //Bind to a cube texture (3d);
+    
     
     _texture.AttachByFrameBuffer(_size);
     _texture.Init();
@@ -48,37 +50,42 @@ void FrameBufferObject3D::Init()
     glDrawBuffer(GL_COLOR_ATTACHMENT0);
     
     GLenum result = glCheckFramebufferStatus(GL_DRAW_FRAMEBUFFER);
+    // debug the error message
+    
+    
     switch(result)
     {
         case GL_FRAMEBUFFER_COMPLETE:
             
-            printf("envbuffer: [SUCCESS] framebuffer object is complete...\n");
-        
+            std::cout <<"CFrameBuffer: [SUCCESS] framebuffer object is complete...\n"<<std::endl;
+            
+            
             break;
         case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
             
-            printf("envbuffer: [ERROR] framebuffer incomplete, incomplete attachment...\n");
+            std::cout <<"CFrameBuffer: [ERROR] framebuffer incomplete, incomplete attachment...\n"<<std::endl;
             
             break;
             
         case GL_FRAMEBUFFER_UNSUPPORTED:
             
-            printf("envbuffer framebuffer format...\n");
+            std::cout <<"Unsupported framebuffer format...\n"<<std::endl;
             
             
             break;
         case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
             
-            printf("envbuffer: [ERROR] framebuffer incomplete, missing attachment...\n");
-            
+            std::cout <<"CFrameBuffer: [ERROR] framebuffer incomplete, missing attachment...\n"<<std::endl;
             
             break;
+            
         default:
             
-            printf("envbuffer: [ERROR] framebuffer incomplete. unknown reason..");
+            std::cout <<"CFrameBuffer: [ERROR] framebuffer incomplete. unknown reason.."<<std::endl;
             
             
     }
+
     
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER,0);
 
@@ -93,7 +100,8 @@ void FrameBufferObject3D::Clear()
 }
 void FrameBufferObject3D::SetCurrentFace(GLenum face)
 {
+    //The the current face which will be stone into this buffer
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, face, _texture.GetID(), 0);
-        glFramebufferRenderbuffer(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _dB);
+    glFramebufferRenderbuffer(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, _dB);
     
 }

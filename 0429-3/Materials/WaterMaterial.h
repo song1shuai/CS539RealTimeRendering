@@ -18,14 +18,16 @@
 
 class WaterMaterial:public IMaterial
 {
-  
+   // Material use for water ~~~~
+    
 public:
     
-    Texture2D * _diffuse;
-    Texture2D * _reflection;
+
+    
+    Texture2D * _diffuse;           // not used
+    Texture2D * _reflection;        // not used for now i just reflect the skybox 
     void Bind();
     void Init();
-   // re
     WaterMaterial(std::string textureName);
     
 };

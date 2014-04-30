@@ -21,6 +21,7 @@ class SkyBox:public IDrawable
 {
     friend class SceneManager;
 private:
+    //set the camara so the sky box can move with the camera
     ICamera * _camera;
 public:
    
